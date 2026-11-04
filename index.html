@@ -2,108 +2,189 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
   <title>ระบบบันทึกเวลาปฏิบัติงานบุคลากร - วพบ.สวรรค์ประชารักษ์ นครสวรรค์</title>
   
-  <!-- Instant Redirection -->
-  <meta http-equiv="refresh" content="0; url=https://script.google.com/macros/s/AKfycbzvjrAQYK7WdjqHx0Jnf6LYgVX83KUHc2dtSXyCSXjOeC5hHf5ehGt5aEYSQujrmVzEeQ/exec">
-  <link rel="canonical" href="https://script.google.com/macros/s/AKfycbzvjrAQYK7WdjqHx0Jnf6LYgVX83KUHc2dtSXyCSXjOeC5hHf5ehGt5aEYSQujrmVzEeQ/exec">
-  
+  <!-- SEO & Social Open Graph Meta Tags (สำหรับแชร์ LINE / Facebook) -->
+  <meta name="description" content="ระบบบันทึกเวลาปฏิบัติงานบุคลากร วิทยาลัยพยาบาลบรมราชชนนี สวรรค์ประชารักษ์ นครสวรรค์ คณะพยาบาลศาสตร์ สถาบันพระบรมราชชนก">
+  <meta name="author" content="กลุ่มงานเทคโนโลยีสารสนเทศ (CitCentre) BCNSPRNW">
+  <meta name="theme-color" content="#1d4ed8">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="ระบบบันทึกเวลา">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://citbcnsprnw.github.io/time/">
+  <meta property="og:title" content="ระบบบันทึกเวลาปฏิบัติงานบุคลากร">
+  <meta property="og:description" content="ระบบบันทึกเวลาปฏิบัติงาน วิทยาลัยพยาบาลบรมราชชนนี สวรรค์ประชารักษ์ นครสวรรค์">
+  <meta property="og:image" content="https://lh5.googleusercontent.com/d/1tDVKF6qFEl7_avxewudlClYsk9qkrgop">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ระบบบันทึกเวลาปฏิบัติงานบุคลากร">
+  <meta name="twitter:description" content="ระบบบันทึกเวลาปฏิบัติงาน วิทยาลัยพยาบาลบรมราชชนนี สวรรค์ประชารักษ์ นครสวรรค์">
+  <meta name="twitter:image" content="https://lh5.googleusercontent.com/d/1tDVKF6qFEl7_avxewudlClYsk9qkrgop">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="https://lh5.googleusercontent.com/d/1tDVKF6qFEl7_avxewudlClYsk9qkrgop">
+  <link rel="apple-touch-icon" href="https://lh5.googleusercontent.com/d/1tDVKF6qFEl7_avxewudlClYsk9qkrgop">
+
+  <!-- Google Font: Sarabun -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  
+
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Sarabun', sans-serif;
-      background: #0b0f19;
-      color: #f8fafc;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    .card {
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7), 0 0 40px rgba(56, 189, 248, 0.1);
-      border-radius: 20px;
-      padding: 36px 28px;
-      max-width: 480px;
+    html, body {
       width: 100%;
-      text-align: center;
-      backdrop-filter: blur(16px);
+      height: 100%;
+      overflow: hidden;
+      background-color: #f8fafc;
+      font-family: 'Sarabun', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
-    .logo-badge {
-      width: 60px;
-      height: 60px;
-      border-radius: 16px;
-      background: linear-gradient(135deg, rgba(14, 165, 233, 0.2), rgba(99, 102, 241, 0.25));
-      border: 1px solid rgba(56, 189, 248, 0.4);
+
+    /* Preloader Layer */
+    #preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, #ffffff 0%, #f1f5f9 100%);
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 16px;
-      font-size: 28px;
+      z-index: 99999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
     }
-    h1 {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: #ffffff;
-      margin-bottom: 6px;
-      line-height: 1.4;
+    #preloader.loaded {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
     }
-    .college {
-      font-size: 0.85rem;
-      color: #94a3b8;
+    .logo-container {
+      position: relative;
       margin-bottom: 24px;
     }
-    .spinner {
-      width: 36px;
-      height: 36px;
-      border: 3px solid rgba(255, 255, 255, 0.1);
-      border-top-color: #38bdf8;
+    .logo-img {
+      width: 90px;
+      height: 90px;
       border-radius: 50%;
+      object-fit: contain;
+      box-shadow: 0 10px 25px -5px rgba(29, 78, 216, 0.35);
+      background: #ffffff;
+      padding: 6px;
+      position: relative;
+      z-index: 2;
+    }
+    .logo-halo {
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(37, 99, 235, 0.25) 0%, rgba(37, 99, 235, 0) 70%);
+      animation: pulse-halo 2.5s infinite ease-in-out;
+      z-index: 1;
+    }
+    @keyframes pulse-halo {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.2); opacity: 0.2; }
+    }
+    .brand-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1e3a8a;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+      text-align: center;
+    }
+    .brand-subtitle {
+      font-size: 0.95rem;
+      color: #475569;
+      margin-bottom: 24px;
+      font-weight: 400;
+      text-align: center;
+    }
+    .spinner-ring {
+      display: inline-block;
+      width: 38px;
+      height: 38px;
+      border: 3px solid #e2e8f0;
+      border-radius: 50%;
+      border-top-color: #1d4ed8;
       animation: spin 0.8s linear infinite;
-      margin: 0 auto 18px;
+      margin-bottom: 14px;
     }
     @keyframes spin {
       to { transform: rotate(360deg); }
     }
     .status-text {
-      font-size: 0.95rem;
-      color: #38bdf8;
-      font-weight: 500;
-      margin-bottom: 12px;
-    }
-    .manual-link {
-      font-size: 0.82rem;
+      font-size: 0.85rem;
       color: #64748b;
     }
-    .manual-link a {
-      color: #38bdf8;
-      text-decoration: underline;
-      font-weight: 500;
+
+    /* Fullscreen iFrame Masking */
+    #timeFrame {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      border: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      z-index: 1;
+      display: block;
     }
   </style>
-
-  <script>
-    const targetUrl = "https://script.google.com/macros/s/AKfycbzvjrAQYK7WdjqHx0Jnf6LYgVX83KUHc2dtSXyCSXjOeC5hHf5ehGt5aEYSQujrmVzEeQ/exec";
-    window.location.replace(targetUrl);
-  </script>
 </head>
 <body>
-  <div class="card">
-    <div class="logo-badge">⏱️</div>
-    <h1>ระบบบันทึกเวลาปฏิบัติงานบุคลากร</h1>
-    <div class="college">วิทยาลัยพยาบาลบรมราชชนนี สวรรค์ประชารักษ์ นครสวรรค์</div>
-    <div class="spinner"></div>
-    <div class="status-text">กำลังนำท่านเข้าสู่ระบบ...</div>
-    <div class="manual-link">
-      หากหน้าเว็บไม่เปลี่ยนอัตโนมัติ <a href="https://script.google.com/macros/s/AKfycbzvjrAQYK7WdjqHx0Jnf6LYgVX83KUHc2dtSXyCSXjOeC5hHf5ehGt5aEYSQujrmVzEeQ/exec">คลิกที่นี่เพื่อเข้าสู่ระบบ</a>
+
+  <!-- Premium Preloader -->
+  <div id="preloader">
+    <div class="logo-container">
+      <div class="logo-halo"></div>
+      <img src="https://lh5.googleusercontent.com/d/1tDVKF6qFEl7_avxewudlClYsk9qkrgop" alt="BCNSPRNW Logo" class="logo-img">
     </div>
+    <div class="brand-title">ระบบบันทึกเวลาปฏิบัติงานบุคลากร</div>
+    <div class="brand-subtitle">วิทยาลัยพยาบาลบรมราชชนนี สวรรค์ประชารักษ์ นครสวรรค์</div>
+    <div class="spinner-ring"></div>
+    <div class="status-text">กำลังเชื่อมต่อระบบ กรุณารอสักครู่...</div>
   </div>
+
+  <!-- Google Apps Script Web App Fullscreen Frame -->
+  <iframe 
+    id="timeFrame" 
+    src="https://script.google.com/macros/s/AKfycbzvjrAQYK7WdjqHx0Jnf6LYgVX83KUHc2dtSXyCSXjOeC5hHf5ehGt5aEYSQujrmVzEeQ/exec"
+    allow="camera; microphone; geolocation; fullscreen; clipboard-read; clipboard-write"
+    onload="hidePreloader()">
+  </iframe>
+
+  <script>
+    function hidePreloader() {
+      var loader = document.getElementById('preloader');
+      if (loader && !loader.classList.contains('loaded')) {
+        setTimeout(function() {
+          loader.classList.add('loaded');
+        }, 500);
+      }
+    }
+
+    // Safety timeout: ซ่อน preloader ภายใน 3.5 วินาทีหาก event onload เกิดความล่าช้า
+    setTimeout(function() {
+      hidePreloader();
+    }, 3500);
+  </script>
+
 </body>
 </html>
